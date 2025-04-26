@@ -1,0 +1,9 @@
+strings:
+  inputs:
+    - CoreFitness/Resource/Source/ja.lproj/Localizable.strings
+  outputs:
+    templateName: structured-swift5
+    output: CoreFitness/Resource/Generated/L10n.swift
+    params:
+      publicAccess: true
+
