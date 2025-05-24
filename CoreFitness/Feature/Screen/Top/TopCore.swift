@@ -19,10 +19,13 @@ struct TopCore {
             switch action {
             case .footer(.tabChanged):
                 return .none
-                
+
             case .footer:
                 return .none
             }
+        }
+        Scope(state: \.footer, action: \.footer) {
+            FooterCore()
         }
     }
 }

@@ -15,7 +15,6 @@ struct FooterScreen: View {
         )
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
         .ignoresSafeArea(.all)
-        .onAppear { viewStore.send(.viewAppeared) }
     }
 }
 
