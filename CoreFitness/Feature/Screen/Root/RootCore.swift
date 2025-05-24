@@ -11,6 +11,7 @@ struct RootCore {
             case loggedOut(LoginCore.State)
         }
 
+        // LoginScreen or TopScreen
         var screenState: ScreenState = .loggedOut(.init())
     }
 

@@ -3,13 +3,26 @@ import Foundation
 
 @Reducer
 struct TopCore {
-    struct State: Equatable {}
+    struct State: Equatable {
+        var footer = FooterCore.State()
+        var isAtAllTopScreen: Bool {
+            true
+        }
+    }
 
-    enum Action: Equatable {}
+    enum Action: Equatable {
+        case footer(FooterCore.Action)
+    }
 
     var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
-            switch action {}
+            switch action {
+            case .footer(.tabChanged):
+                return .none
+                
+            case .footer:
+                return .none
+            }
         }
     }
 }
