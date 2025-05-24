@@ -9,7 +9,13 @@ struct FooterScreen: View {
     }
 
     var body: some View {
-        Text("FooterScreen")
+        FooterTabView(
+            selectedTab: viewStore.tab,
+            onSelect: { viewStore.send(.tabSelected($0)) }
+        )
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        .ignoresSafeArea(.all)
+        .onAppear { viewStore.send(.viewAppeared) }
     }
 }
 

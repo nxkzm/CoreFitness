@@ -43,7 +43,7 @@ struct TopScreen: View {
                 }
                 if viewStore.isAtAllTopScreen {
                     // フッターの高さ確保
-                    Spacer().frame(height: 60)
+                    Spacer().frame(height: FooterTabView.viewHeight)
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
