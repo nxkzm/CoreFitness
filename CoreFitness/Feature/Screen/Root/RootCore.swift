@@ -22,7 +22,10 @@ struct RootCore {
 
     var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
-            switch action {}
+            switch action {
+            case .loggedIn, .loggedOut:
+                return .none
+            }
         }
         Scope(state: \.screenState, action: \.self) {
             Scope(state: \.loggedIn, action: \.loggedIn) {

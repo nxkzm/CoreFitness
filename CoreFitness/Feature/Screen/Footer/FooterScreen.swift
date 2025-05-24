@@ -12,3 +12,10 @@ struct FooterScreen: View {
         Text("FooterScreen")
     }
 }
+
+#Preview {
+    let store = Store(initialState: FooterCore.State()) {
+        FooterCore()
+    }
+    FooterScreen(store: store)
+}
