@@ -27,7 +27,7 @@ struct TopScreen: View {
                 switch viewStore.footer.tab {
                 case .record:
                     // Record画面
-                    Text("RecordScreen")
+                    RecordScreen(store: store.scope(state: \.record, action: \.record))
 
                 case .chat:
                     // Chat画面

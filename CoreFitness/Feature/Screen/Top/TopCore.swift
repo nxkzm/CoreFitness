@@ -4,6 +4,7 @@ import Foundation
 @Reducer
 struct TopCore {
     struct State: Equatable {
+        var record = RecordCore.State()
         var footer = FooterCore.State()
         var isAtAllTopScreen: Bool {
             true
@@ -11,6 +12,7 @@ struct TopCore {
     }
 
     enum Action: Equatable {
+        case record(RecordCore.Action)
         case footer(FooterCore.Action)
     }
 
@@ -20,9 +22,12 @@ struct TopCore {
             case .footer(.tabChanged):
                 return .none
 
-            case .footer:
+            case .record, .footer:
                 return .none
             }
+        }
+        Scope(state: \.record, action: \.record) {
+            RecordCore()
         }
         Scope(state: \.footer, action: \.footer) {
             FooterCore()
