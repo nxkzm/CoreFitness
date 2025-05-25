@@ -3,7 +3,7 @@ name: CoreFitnessApp
 options:
   bundleIdPrefix: com.kzm
   deploymentTarget:
-    iOS: 15.0
+    iOS: 16.0
   usesSwiftPackages: true
   localizations:
     - ja
