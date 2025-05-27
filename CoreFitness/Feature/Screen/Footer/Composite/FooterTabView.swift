@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct FooterTabView: View {
-    static let viewHeight: CGFloat = 60
+    static let viewHeight: CGFloat = 90
     static let safeAreaBottom: CGFloat = 10
     let selectedTab: TabItem
     let onSelect: (TabItem) -> Void
