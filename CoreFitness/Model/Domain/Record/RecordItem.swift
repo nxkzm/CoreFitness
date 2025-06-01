@@ -1,6 +1,6 @@
 import Foundation
 
-struct TrainingRecord: Equatable, Identifiable {
+struct RecordItem: Equatable, Identifiable {
     let id = UUID()
     var date: Date
     var content: String

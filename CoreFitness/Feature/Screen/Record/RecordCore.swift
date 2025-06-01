@@ -8,7 +8,7 @@ struct RecordCore {
         @BindingState var selectedDate = Date()
         @BindingState var showsEntrySheet: Bool = false
         @BindingState var showsActionSheet = false
-        var records: [TrainingRecord] = []
+        var records: [RecordItem] = []
         var selectedRecordID: UUID?
         var editContent = ""
     }
@@ -75,7 +75,7 @@ struct RecordCore {
                     state.records[id].content = content
                 } else {
                     // 選択されたレコードが存在しない場合、新規追加
-                    let newRecord = TrainingRecord(
+                    let newRecord = RecordItem(
                         date: state.selectedDate,
                         content: content
                     )
