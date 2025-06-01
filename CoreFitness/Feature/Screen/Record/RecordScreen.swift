@@ -49,13 +49,15 @@ struct RecordScreen: View {
                                     )
                                   }
                             ) { record in
-                            // TODO: リストのアイテムを編集可能 ＋ 削除可能に
                               Text(record.content)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .background(Color(.white))
                                 .padding(.vertical, 10)
                                 .padding(.horizontal, 20)
                                 .cornerRadius(8)
+                                .onTapGesture {
+                                    viewStore.send(.recordTapped(record.id))
+                                }
                             }
                         }
                     }
@@ -65,8 +67,24 @@ struct RecordScreen: View {
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.white, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
+                .confirmationDialog(
+                    "",
+                    isPresented: viewStore.$showsActionSheet,
+                    titleVisibility: .hidden
+                ) {
+                    Button("編集する") {
+                        viewStore.send(.editConfirmed)
+                    }
+                    Button("削除する", role: .destructive) {
+                        viewStore.send(.deleteConfirmed)
+                    }
+                    Button("キャンセル", role: .cancel) {
+                        viewStore.send(.actionSheetCancelled)
+                    }
+                }
                 .sheet(isPresented: viewStore.$showsEntrySheet) {
                     RecordEntrySheet(
+                        content: viewStore.editContent,
                         date: viewStore.selectedDate,
                         onSave: { viewStore.send(.entrySaved($0)) },
                         onCancel: { viewStore.send(.entrySheetDismissed) }

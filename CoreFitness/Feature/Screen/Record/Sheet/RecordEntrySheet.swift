@@ -2,10 +2,22 @@ import SwiftUI
 
 /// 記録入力シート
 struct RecordEntrySheet: View {
-    @State private var content: String = ""
+    @State private var content: String
     let date: Date
     let onSave: (String) -> Void
     let onCancel: () -> Void
+
+    init(
+        content: String,
+        date: Date,
+        onSave: @escaping (String) -> Void,
+        onCancel: @escaping () -> Void
+    ) {
+        _content = State(initialValue: content)
+        self.date = date
+        self.onSave = onSave
+        self.onCancel = onCancel
+    }
 
     var body: some View {
         NavigationStack {
