@@ -46,7 +46,7 @@ open CoreFitness.xcodeproj
 
 ## 🌴 Screen Tree
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/e7459532-9b93-4998-84f5-a0149795c387" alt="screen_tree">
+  <img src="https://github.com/user-attachments/assets/e7459532-9b93-4998-84f5-a0149795c387" alt="screen_tree" width=70%>
 </p>
 
 
