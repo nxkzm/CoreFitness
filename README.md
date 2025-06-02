@@ -50,36 +50,36 @@ open CoreFitness.xcodeproj
 </p>
 
 
-## Training Record
+## 🏋🏻 Training Record
 <p align="center">
   <img src="https://github.com/user-attachments/assets/2753e9da-28ca-40bb-9248-d15876bb31a0" alt="record_training">
 </p>
 
 
-## Meal Record
+## 🍽️ Meal Record
 <p align="center">
   <img src="https://github.com/user-attachments/assets/55b7fba0-941c-4752-9004-f1045c950ce0" alt="record_meal">
 </p>
 
 
-## Daily Calories
+## 📝 Daily Calories
 <p align="center">
   <img src="https://github.com/user-attachments/assets/ae8f4131-f696-4079-a1c8-65ad06d6d3f3" alt="daily_calories">
 </p>
 
 
-## Edit
+## ✍🏻 Edit
 <p align="center">
   <img src="https://github.com/user-attachments/assets/379c721f-ea28-44dc-ae9c-ee381949f7b3" alt="edit">
 </p>
 
 
-## Delete
+## 🗑️ Delete
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6cde5609-2d11-49c3-a6e1-9ad9fb745c2d" alt="delete">
 </p>
 
-## Footer
+## 👣 Footer
 <p align="center">
   <img src="https://github.com/user-attachments/assets/b9abca8a-74a8-4106-8a38-877eb6b33720" alt="footer">
 </p>
