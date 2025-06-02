@@ -12,7 +12,9 @@ struct RootCore {
         }
 
         // LoginScreen or TopScreen
-        var screenState: ScreenState = .loggedOut(.init())
+        // TODO: ログイン処理実装後に蓋開け
+        // var screenState: ScreenState = .loggedOut(.init())
+        var screenState: ScreenState = .loggedIn(.init())
     }
 
     enum Action: Equatable {
