@@ -24,9 +24,20 @@ struct RecordScreen: View {
                             .background(Color(.white))
                             .padding(20)
 
-                            // 記録追加ボタン
                             HStack {
+                                // 総摂取カロリー
+                                Text("総摂取カロリー： \(viewStore.dailyCalories)kcal")
+                                    .font(.subheadline)
+                                    .foregroundColor(.white)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
+                                    .background(Color.green.opacity(0.5))
+                                    .cornerRadius(10)
+                                    .padding(.leading, 20)
+
                                 Spacer()
+
+                                // 記録追加ボタン
                                 Button(action: {
                                     viewStore.send(.addButtonTapped)
                                 }) {
@@ -36,7 +47,7 @@ struct RecordScreen: View {
                                 }
                                 .padding(.trailing, 20)
                             }
-                            .padding(.bottom, 10)
+                            .padding(.vertical, 10)
 
                             // 記録リスト
                             ForEach(
@@ -48,17 +59,13 @@ struct RecordScreen: View {
                                       toGranularity: .day
                                     )
                                   }
-                            ) { record in
-                              Text(record.content)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                .background(Color(.white))
-                                .padding(.vertical, 10)
-                                .padding(.horizontal, 20)
-                                .cornerRadius(8)
+                            ) { item in
+                                RecordRowView(item: item)
                                 .onTapGesture {
-                                    viewStore.send(.recordTapped(record.id))
+                                    viewStore.send(.recordTapped(item.id))
                                 }
                             }
+                            Spacer().frame(height: 20)
                         }
                     }
                 }
@@ -84,8 +91,7 @@ struct RecordScreen: View {
                 }
                 .sheet(isPresented: viewStore.$showsEntrySheet) {
                     RecordEntrySheet(
-                        content: viewStore.editContent,
-                        date: viewStore.selectedDate,
+                        item: viewStore.editItem ?? RecordItem(date: viewStore.selectedDate, type: .training),
                         onSave: { viewStore.send(.entrySaved($0)) },
                         onCancel: { viewStore.send(.entrySheetDismissed) }
                     )

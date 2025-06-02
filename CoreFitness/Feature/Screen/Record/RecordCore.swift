@@ -10,7 +10,23 @@ struct RecordCore {
         @BindingState var showsActionSheet = false
         var records: [RecordItem] = []
         var selectedRecordID: UUID?
-        var editContent = ""
+        var editItem: RecordItem?
+        /// 総摂取カロリー / 日
+        var dailyCalories: String {
+            let sum = records
+                .filter { record in
+                    Calendar.current.isDate(
+                        record.date,
+                        equalTo: selectedDate,
+                        toGranularity: .day
+                    )
+                    && record.type == .meal
+                }
+                .reduce(0) { partialSum, record in
+                    partialSum + (Int(record.calories) ?? 0)
+                }
+            return "\(sum)"
+        }
     }
 
     enum Action: Equatable, BindableAction {
@@ -21,7 +37,7 @@ struct RecordCore {
         case actionSheetCancelled
         case deleteConfirmed
         case editConfirmed
-        case entrySaved(String)
+        case entrySaved(RecordItem)
         case entrySheetDismissed
     }
 
@@ -37,7 +53,7 @@ struct RecordCore {
                 return .none
 
             case .addButtonTapped:
-                state.editContent = ""
+                state.editItem = .init(date: state.selectedDate, type: .training)
                 state.selectedRecordID = nil
                 state.showsEntrySheet = true
                 return .none
@@ -61,33 +77,30 @@ struct RecordCore {
                 return .none
 
             case .editConfirmed:
-                if let id = state.selectedRecordID,
-                   let record = state.records.first(where: { $0.id == id }) {
-                    state.editContent = record.content
+                if let item = state.records.first(where: { $0.id == state.selectedRecordID }) {
+                    state.editItem = item
                     state.showsEntrySheet = true
                 }
                 state.showsActionSheet = false
                 return .none
 
-            case .entrySaved(let content):
-                if let id = state.records.firstIndex(where: { $0.id == state.selectedRecordID }) {
+            case .entrySaved(let newItem):
+                if let index = state.records.firstIndex(where: { $0.id == state.editItem?.id }) {
                     // 選択されたレコードが存在する場合、編集
-                    state.records[id].content = content
+                    state.records[index] = newItem
                 } else {
                     // 選択されたレコードが存在しない場合、新規追加
-                    let newRecord = RecordItem(
-                        date: state.selectedDate,
-                        content: content
-                    )
-                    state.records.append(newRecord)
+                    state.records.append(newItem)
                 }
                 state.showsEntrySheet = false
                 state.selectedRecordID = nil
+                state.editItem = nil
                 return .none
 
             case .entrySheetDismissed:
                 state.showsEntrySheet = false
                 state.selectedRecordID = nil
+                state.editItem = nil
                 return .none
             }
         }
