@@ -35,8 +35,8 @@ struct RecordCore {
         case addButtonTapped
         case recordTapped(UUID)
         case actionSheetCancelled
-        case deleteConfirmed
         case editConfirmed
+        case deleteConfirmed
         case entrySaved(RecordItem)
         case entrySheetDismissed
     }
@@ -68,20 +68,20 @@ struct RecordCore {
                 state.selectedRecordID = nil
                 return .none
 
-            case .deleteConfirmed:
-                if let id = state.selectedRecordID {
-                    state.records.removeAll { $0.id == id }
-                }
-                state.showsActionSheet = false
-                state.selectedRecordID = nil
-                return .none
-
             case .editConfirmed:
                 if let item = state.records.first(where: { $0.id == state.selectedRecordID }) {
                     state.editItem = item
                     state.showsEntrySheet = true
                 }
                 state.showsActionSheet = false
+                return .none
+
+            case .deleteConfirmed:
+                if let id = state.selectedRecordID {
+                    state.records.removeAll { $0.id == id }
+                }
+                state.showsActionSheet = false
+                state.selectedRecordID = nil
                 return .none
 
             case .entrySaved(let newItem):
