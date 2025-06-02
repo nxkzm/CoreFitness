@@ -9,10 +9,10 @@ public enum TabItem: Equatable, CaseIterable {
 
     public var label: String {
         switch self {
-        case .record: return "Record"
-        case .chat: return "Chat"
-        case .timeline: return "Timeline"
-        case .myPage: return "MyPage"
+        case .record: return L10n.labelRecord
+        case .chat: return L10n.labelChat
+        case .timeline: return L10n.labelTimeline
+        case .myPage: return L10n.labelMyPage
         }
     }
 

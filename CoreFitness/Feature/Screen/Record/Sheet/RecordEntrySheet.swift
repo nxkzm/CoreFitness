@@ -28,8 +28,8 @@ struct RecordEntrySheet: View {
         NavigationStack {
             Form {
                 // カテゴリ選択
-                Section(header: Text("カテゴリを選択")) {
-                    Picker("カテゴリ", selection: $item.type) {
+                Section(header: Text(L10n.labelSelectCategory)) {
+                    Picker(L10n.labelCategory, selection: $item.type) {
                         ForEach(RecordType.allCases) { type in
                             Text(type.label).tag(type)
                         }
@@ -51,14 +51,14 @@ struct RecordEntrySheet: View {
                 // カテゴリに応じた入力フィールド
                 inputSection
             }
-            .navigationTitle("記録入力")
+            .navigationTitle(L10n.labelInputRecord)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("キャンセル", action: onCancel)
+                    Button(L10n.labelCancel, action: onCancel)
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("保存") {
+                    Button(L10n.labelSave) {
                         onSave(item)
                     }
                     .disabled(isSaveDisabled)
@@ -78,24 +78,24 @@ struct RecordEntrySheet: View {
     }
 
     private var trainingSection: some View {
-        Section(header: Text("トレーニング内容")) {
-            TextField("メニューを入力", text: $item.trainingMenu)
+        Section(header: Text(L10n.labelContentTraining)) {
+            TextField(L10n.labelInputMenu, text: $item.trainingMenu)
             .autocapitalization(.none)
 
-            TextField("重量 (kg)", text: $item.weight)
+            TextField(L10n.labelWeight, text: $item.weight)
             .keyboardType(.numberPad)
 
-            TextField("回数", text: $item.reps)
+            TextField(L10n.labelReps, text: $item.reps)
             .keyboardType(.numberPad)
         }
     }
 
     private var mealSection: some View {
-        Section(header: Text("食事内容")) {
-            TextField("食事内容を入力", text: $item.mealContent)
+        Section(header: Text(L10n.labelMealContentTitle)) {
+            TextField(L10n.labelInputMealContent, text: $item.mealContent)
             .autocapitalization(.none)
 
-            TextField("カロリー (kcal)", text: $item.calories)
+            TextField(L10n.labelCaloriesPlaceholder, text: $item.calories)
             .keyboardType(.numberPad)
         }
     }

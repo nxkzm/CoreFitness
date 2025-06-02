@@ -57,10 +57,10 @@ struct RecordRowView: View {
 
     private var trainingView: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("メニュー: \(item.trainingMenu)")
+            Text(L10n.labelMenu(item.trainingMenu))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
-            Text("重量: \(item.weight)  レップ: \(item.reps)")
+            Text(L10n.labelWeightAndReps(item.weight, item.reps))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }
@@ -68,10 +68,10 @@ struct RecordRowView: View {
 
     private var mealView: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text("食事内容: \(item.mealContent)")
+            Text(L10n.labelMealContent(item.mealContent))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
-            Text("カロリー: \(item.calories)kcal")
+            Text(L10n.labelCalories(item.calories))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
         }

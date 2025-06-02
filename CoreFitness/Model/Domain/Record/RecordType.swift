@@ -8,8 +8,8 @@ enum RecordType: Int, Identifiable, Equatable, CaseIterable {
 
     var label: String {
         switch self {
-        case .training: return "トレーニング"
-        case .meal: return "食事"
+        case .training: return L10n.labelTraining
+        case .meal: return L10n.labelMeal
         }
     }
 

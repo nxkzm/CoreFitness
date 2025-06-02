@@ -26,7 +26,7 @@ struct RecordScreen: View {
 
                             HStack {
                                 // 総摂取カロリー
-                                Text("総摂取カロリー： \(viewStore.dailyCalories)kcal")
+                                Text(L10n.labelDailyCalories(viewStore.dailyCalories))
                                     .font(.subheadline)
                                     .foregroundColor(.white)
                                     .padding(.horizontal, 12)
@@ -70,7 +70,7 @@ struct RecordScreen: View {
                     }
                 }
                 .background { Color(.secondarySystemBackground).ignoresSafeArea(.all) }
-                .navigationTitle("RecordScreen")
+                .navigationTitle(L10n.labelRecordScreen)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbarBackground(.white, for: .navigationBar)
                 .toolbarBackground(.visible, for: .navigationBar)
@@ -79,13 +79,13 @@ struct RecordScreen: View {
                     isPresented: viewStore.$showsActionSheet,
                     titleVisibility: .hidden
                 ) {
-                    Button("編集する") {
+                    Button(L10n.labelEdit) {
                         viewStore.send(.editConfirmed)
                     }
-                    Button("削除する", role: .destructive) {
+                    Button(L10n.labelDelete, role: .destructive) {
                         viewStore.send(.deleteConfirmed)
                     }
-                    Button("キャンセル", role: .cancel) {
+                    Button(L10n.labelCancel, role: .cancel) {
                         viewStore.send(.actionSheetCancelled)
                     }
                 }

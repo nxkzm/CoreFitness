@@ -1,1 +1,26 @@
-
+"label_menu" = "メニュー: %@";
+"label_weight_and_reps" = "重量: %@  レップ: %@";
+"label_meal_content" = "食事内容: %@";
+"label_calories" = "カロリー: %@kcal";
+"label_daily_calories" = "総摂取カロリー： %@kcal";
+"label_edit" = "編集する";
+"label_delete" = "削除する";
+"label_cancel" = "キャンセル";
+"label_save" = "保存";
+"label_record_screen" = "RecordScreen";
+"label_select_category" = "カテゴリを選択";
+"label_category" = "カテゴリ";
+"label_input_record" = "記録入力";
+"label_content_training" = "トレーニング内容";
+"label_input_menu" = "メニューを入力";
+"label_weight" = "重量 (kg)";
+"label_reps" = "回数";
+"label_meal_content_title" = "食事内容";
+"label_input_meal_content" = "食事内容を入力";
+"label_calories_placeholder" = "カロリー (kcal)";
+"label_record" = "Record";
+"label_chat" = "Chat";
+"label_timeline" = "Timeline";
+"label_my_page" = "MyPage";
+"label_training" = "トレーニング";
+"label_meal" = "食事";
